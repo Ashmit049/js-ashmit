@@ -18,3 +18,12 @@ const o={1:"a",2:"b"}
 const p={3:"c",5:"g"}
 const ob=Object.assign(o,p)
 console.log(ob);
+
+
+
+const course ={
+    name:"Ashmit",
+    price:999
+}
+ const{name:fullname}=course
+ console.log(fullname);
