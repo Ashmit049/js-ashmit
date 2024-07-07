@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+</head>
+<body bgcolor="white">
+    <h1 id="practise">this is ok</h1>
+    <button id="follow">Start</button>
+    <button id="sec">Photo</button>
+
+    <script>
+        const ab = new XMLHttpRequest();
+        const req = 'https://api.github.com/users/hiteshchoudhary';
+        ab.open('GET', req);
+        ab.onload = function() {
+            if (ab.status >= 200 && ab.status < 400) {
+                const data = JSON.parse(ab.responseText);
+                const h = document.querySelector("#practise");
+                const f = document.querySelector("#follow");
+                const d=document.querySelector('#sec')
+
+                f.addEventListener('click', () => {
+                    h.innerHTML = data.followers;
+                });
+              
+                d.addEventListener('click', () => {
+                    h.innerHTML = data.name;
+                });
+              
+            } else {
+                console.error('Failed to fetch data from GitHub API');
+            }
+        };
+        ab.send();
+    </script>
+</body>
+</html>
